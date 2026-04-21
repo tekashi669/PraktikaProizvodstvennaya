@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobilkaDocument.Pages.AddEditDocumentPage"
+             Title="Документ"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <StackLayout Padding="15" Spacing="10">
+
+            <Frame BorderColor="#E0E0E0" CornerRadius="10" Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Входящий номер:*" TextColor="#555"/>
+                    <Entry x:Name="txtIncomingNumber" Placeholder="Пример: 01-123" FontSize="14"
+                           TextColor="Black" PlaceholderColor="Gray"/>
+
+                    <Label Text="Дата поступления:*" TextColor="#555"/>
+                    <DatePicker x:Name="dpDateReceived" Format="dd.MM.yyyy" FontSize="14"/>
+
+                    <Label Text="Отправитель:*" TextColor="#555"/>
+                    <Entry x:Name="txtSender" Placeholder="Организация или ФИО" FontSize="14"
+                           TextColor="Black" PlaceholderColor="Gray"/>
+
+                    <Label Text="Краткое содержание:*" TextColor="#555"/>
+                    <Editor x:Name="txtSummary" Placeholder="Содержание" HeightRequest="80" FontSize="14"
+                            TextColor="Black" PlaceholderColor="Gray"/>
+
+                    <Label Text="Исполнитель:" TextColor="#555"/>
+                    <Entry x:Name="txtExecutor" Placeholder="ФИО исполнителя" FontSize="14"
+                           TextColor="Black" PlaceholderColor="Gray"/>
+
+                    <Label Text="Срок исполнения:" TextColor="#555"/>
+                    <DatePicker x:Name="dpExecutionDeadline" Format="dd.MM.yyyy" FontSize="14"/>
+
+                    <Label Text="Статус:" TextColor="#555"/>
+                    <Picker x:Name="pckStatus" Title="Выберите статус" FontSize="14">
+                        <Picker.Items>
+                            <x:String>На рассмотрении</x:String>
+                            <x:String>В работе</x:String>
+                            <x:String>На исполнении</x:String>
+                            <x:String>Исполнен</x:String>
+                            <x:String>Снят с контроля</x:String>
+                            <x:String>Отказ</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+
+            <HorizontalStackLayout Spacing="15">
+                <Button x:Name="btnSave" Text="💾 СОХРАНИТЬ" 
+                        BackgroundColor="#27AE60" TextColor="White"
+                        HorizontalOptions="FillAndExpand" HeightRequest="50"
+                        FontAttributes="Bold"/>
+                <Button x:Name="btnCancel" Text="❌ ОТМЕНА" 
+                        BackgroundColor="#2C3E50" TextColor="White"
+                        HorizontalOptions="FillAndExpand" HeightRequest="50"/>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

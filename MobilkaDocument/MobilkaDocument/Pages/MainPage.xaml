@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobilkaDocument.Pages.MainPage"
+             Title="📋 Журнал входящих документов"
+             BackgroundColor="White">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель инструментов -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,*,*,*" Padding="10" BackgroundColor="#F0F0F0" 
+              ColumnSpacing="5">
+            <Button x:Name="btnAdd" Text="➕ ДОБАВИТЬ" Grid.Column="0" 
+                    BackgroundColor="#27AE60" TextColor="White" 
+                    HeightRequest="45" FontSize="14" FontAttributes="Bold"/>
+
+            <Button x:Name="btnRefresh" Text="🔄 ОБНОВИТЬ" Grid.Column="1" 
+                    BackgroundColor="#2C3E50" TextColor="White" 
+                    HeightRequest="45" FontSize="14" FontAttributes="Bold"/>
+
+            <Button x:Name="btnLogout" Text="🚪 ВЫХОД" Grid.Column="3" 
+                    BackgroundColor="#E74C3C" TextColor="White" 
+                    HeightRequest="45" FontSize="14" FontAttributes="Bold"/>
+        </Grid>
+
+        <!-- Список документов -->
+        <CollectionView x:Name="cvDocuments" Grid.Row="1" Margin="0,10,0,10" 
+                       SelectionMode="Single">
+
+            <CollectionView.EmptyView>
+                <StackLayout Padding="20">
+                    <Label Text="📭 Нет документов" FontSize="16" TextColor="Gray" 
+                           HorizontalOptions="Center"/>
+                    <Label Text="Нажмите ➕ ДОБАВИТЬ" FontSize="12" TextColor="Gray" 
+                           HorizontalOptions="Center"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto,Auto"
+                          BackgroundColor="White">
+
+                        <BoxView Grid.RowSpan="3" Grid.Column="0" WidthRequest="5" 
+                                 Color="{Binding StatusColor}" Margin="0,0,10,0"/>
+
+                        <HorizontalStackLayout Grid.Row="0" Grid.Column="1" Spacing="10">
+                            <Label Text="{Binding IncomingNumber}" FontAttributes="Bold" FontSize="16"
+                                   TextColor="Black"/>
+                            <Label Text="{Binding DateReceivedFormatted}" TextColor="Gray" FontSize="12"/>
+                        </HorizontalStackLayout>
+
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Sender}" 
+                               FontSize="14" LineBreakMode="TailTruncation" MaxLines="1"
+                               TextColor="Black"/>
+
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Summary}" 
+                               FontSize="12" TextColor="Gray" LineBreakMode="TailTruncation" MaxLines="2"/>
+
+                        <Border Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" 
+                                StrokeThickness="0" BackgroundColor="{Binding StatusColor}"
+                                Padding="8,4">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8"/>
+                            </Border.StrokeShape>
+                            <Label Text="{Binding Status}" TextColor="White" FontSize="11" FontAttributes="Bold"/>
+                        </Border>
+
+                        <Label Grid.Row="2" Grid.Column="2" Text="{Binding ExecutionDeadlineFormatted}" 
+                               FontSize="10" TextColor="Gray" HorizontalOptions="End"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Статус бар -->
+        <Grid Grid.Row="2" BackgroundColor="#F0F0F0" Padding="10">
+            <HorizontalStackLayout Spacing="10">
+                <Label x:Name="lblStatus" Text="Готов к работе" FontSize="12" TextColor="Black"/>
+                <Label Text="|" TextColor="Gray"/>
+                <Label Text="Записей: " TextColor="Black"/>
+                <Label x:Name="lblCount" Text="0" FontAttributes="Bold" TextColor="Black"/>
+            </HorizontalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

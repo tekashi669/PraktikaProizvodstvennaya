@@ -1,0 +1,151 @@
+﻿<Window x:Class="DocumentsJournal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="📋 Журнал входящих документов - Администрация Слободского района"
+        Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F7FA">
+
+    <Window.Resources>
+        <!-- Стили -->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="#00B4D8"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="#FF6B35"/>
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="#1A365D"/>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="AlternatingRowBackground" Value="#F8FAFC"/>
+            <Setter Property="RowHeight" Value="40"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="8,0"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="#1A365D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" Background="#1A365D" CornerRadius="8" Padding="15" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="📋" FontSize="28" Margin="0,0,10,0"/>
+                <TextBlock Text="Журнал входящих документов" FontSize="22" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text=" | Администрация Слободского района" FontSize="14" Foreground="#90E0EF" VerticalAlignment="Bottom" Margin="10,0,0,5"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Панель инструментов -->
+        <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="10" Margin="0,0,0,10" BorderBrush="#E2E8F0" BorderThickness="1">
+            <StackPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <Button x:Name="btnAdd" Content="➕ Добавить документ" Background="#00B4D8" Width="168"/>
+                    <Button x:Name="btnEdit" Content="✏️ Редактировать" IsEnabled="False" Style="{StaticResource PrimaryButton}" Width="137"/>
+                    <Button x:Name="btnDelete" Content="🗑️ Удалить" IsEnabled="False" Style="{StaticResource DangerButton}" Width="100"/>
+                    <Button x:Name="btnRefresh" Content="🔄 Обновить" Style="{StaticResource PrimaryButton}" Width="106"/>
+                    <Button x:Name="btnStatistics" Content="📊 Статистика" Background="#00B4D8" Width="112"/>
+                    <Button x:Name="btnOverdue" Content="⚠️ Просроченные" Style="{StaticResource DangerButton}" Width="139"/>
+                    <Button x:Name="btnLogout" Content="🚪 Выход" Style="{StaticResource DangerButton}" Width="90"/>
+                </WrapPanel>
+
+                <!-- Панель поиска -->
+                <Border x:Name="searchPanel" Background="#F1F5F9" CornerRadius="6" Padding="10" Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBlock Text="🔍 Поиск документов" FontWeight="Bold" Margin="0,0,0,10" Foreground="#1A365D"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="txtSearch" Grid.Column="0" Height="35" Padding="8,0" Tag="Введите номер, отправителя или содержание..."/>
+                            <Button x:Name="btnSearch" Grid.Column="1" Content="🔎 Найти" Background="#00B4D8" Width="100"/>
+                            <Button x:Name="btnClearSearch" Grid.Column="2" Content="❌ Сброс" Style="{StaticResource PrimaryButton}" Width="100"/>
+                        </Grid>
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <DatePicker x:Name="dpDateFrom" Grid.Column="0" Margin="0,0,10,0" Height="35"/>
+                            <DatePicker x:Name="dpDateTo" Grid.Column="1" Height="35"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <!-- Таблица документов -->
+        <DataGrid x:Name="dgDocuments" Grid.Row="2" Margin="0,10,0,10" RowHeaderWidth="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Вх. №" Binding="{Binding IncomingNumber}" Width="100"/>
+                <DataGridTextColumn Header="Дата поступления" Binding="{Binding DateReceivedFormatted}" Width="120"/>
+                <DataGridTextColumn Header="Отправитель" Binding="{Binding Sender}" Width="220"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding DocumentType}" Width="120"/>
+                <DataGridTextColumn Header="Содержание" Binding="{Binding Summary}" Width="250"/>
+                <DataGridTextColumn Header="Исполнитель" Binding="{Binding Executor}" Width="150"/>
+                <DataGridTemplateColumn Header="Статус" Width="140">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border CornerRadius="10" Padding="8,4" 
+                                    Background="{Binding StatusColor}"
+                                    HorizontalAlignment="Center" Width="110">
+                                <TextBlock Text="{Binding Status}" Foreground="White" 
+                                           FontWeight="SemiBold" FontSize="11"
+                                           HorizontalAlignment="Center"/>
+                            </Border>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Срок исполнения" Binding="{Binding ExecutionDeadlineFormatted}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Статус бар -->
+        <Border Grid.Row="3" Background="#1A365D" CornerRadius="8" Padding="10,8" Margin="0,10,0,0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="tbStatusMessage" Foreground="#90E0EF" FontStyle="Italic" FontSize="12"/>
+                <TextBlock Text=" | " Foreground="#90E0EF" Margin="10,0"/>
+                <TextBlock Text="📋 Записей: " Foreground="White" FontSize="12"/>
+                <TextBlock x:Name="tbRecordsCount" Text="0" Foreground="#00B4D8" FontWeight="Bold" FontSize="12"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,65 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MobilkaDocument
+build_property.ProjectDir = C:\Users\tekas\source\repos\MobilkaDocument\MobilkaDocument\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[C:/Users/tekas/source/repos/MobilkaDocument/MobilkaDocument/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobilkaDocument.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/tekas/source/repos/MobilkaDocument/MobilkaDocument/Pages/AddEditDocumentPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobilkaDocument.Pages.AddEditDocumentPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\AddEditDocumentPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\AddEditDocumentPage.xaml
+
+[C:/Users/tekas/source/repos/MobilkaDocument/MobilkaDocument/Pages/DocumentDetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobilkaDocument.Pages.DocumentDetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\DocumentDetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\DocumentDetailPage.xaml
+
+[C:/Users/tekas/source/repos/MobilkaDocument/MobilkaDocument/Pages/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobilkaDocument.Pages.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\LoginPage.xaml
+
+[C:/Users/tekas/source/repos/MobilkaDocument/MobilkaDocument/Pages/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobilkaDocument.Pages.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\MainPage.xaml
+
+[C:/Users/tekas/source/repos/MobilkaDocument/MobilkaDocument/Pages/RegisterPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobilkaDocument.Pages.RegisterPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\RegisterPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\RegisterPage.xaml
+
+[C:/Users/tekas/source/repos/MobilkaDocument/MobilkaDocument/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobilkaDocument.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/tekas/source/repos/MobilkaDocument/MobilkaDocument/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobilkaDocument.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml

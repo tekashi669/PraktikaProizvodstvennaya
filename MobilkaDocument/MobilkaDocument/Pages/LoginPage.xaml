@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobilkaDocument.Pages.LoginPage"
+             BackgroundColor="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="#2C3E50" HeightRequest="200" VerticalOptions="Start"/>
+
+        <ScrollView VerticalOptions="Center">
+            <StackLayout Padding="30" Spacing="15" Margin="0,50,0,0" 
+                         BackgroundColor="White" VerticalOptions="Center">
+
+                <Label Text="📋" FontSize="50" HorizontalOptions="Center"/>
+                <Label Text="Журнал входящих документов" FontSize="18" FontAttributes="Bold" 
+                       HorizontalOptions="Center" TextColor="#2C3E50"/>
+                <Label Text="Администрация Слободского района" FontSize="12" 
+                       TextColor="Gray" HorizontalOptions="Center" Margin="0,0,0,20"/>
+
+                <Entry x:Name="txtEmail" Placeholder="Email" Keyboard="Email"
+                       FontSize="16" HeightRequest="50" Text="test@mail.ru"
+                       TextColor="Black" PlaceholderColor="Gray"/>
+
+                <Entry x:Name="txtPassword" Placeholder="Пароль" IsPassword="True"
+                       FontSize="16" HeightRequest="50" Text="123456"
+                       TextColor="Black" PlaceholderColor="Gray"/>
+
+                <Button x:Name="btnLogin" Text="ВОЙТИ" 
+                        BackgroundColor="#27AE60" TextColor="White"
+                        HeightRequest="50" FontSize="16" FontAttributes="Bold"/>
+
+                <Button x:Name="btnRegister" Text="РЕГИСТРАЦИЯ" 
+                        BackgroundColor="#2C3E50" TextColor="White"
+                        HeightRequest="50" FontSize="16" FontAttributes="Bold"/>
+
+                <Label x:Name="lblStatus" Text="" FontSize="12" 
+                       HorizontalOptions="Center" TextColor="Red"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

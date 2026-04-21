@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobilkaDocument.Pages.DocumentDetailPage"
+             Title="Детали документа"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <StackLayout Padding="15" Spacing="10">
+
+            <Grid ColumnDefinitions="*,Auto">
+                <Label x:Name="lblNumber" FontSize="22" FontAttributes="Bold" TextColor="#2C3E50"/>
+                <Border x:Name="borderStatus" StrokeThickness="0" Padding="12,6">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10"/>
+                    </Border.StrokeShape>
+                    <Label x:Name="lblStatus" TextColor="White" FontSize="14" FontAttributes="Bold"/>
+                </Border>
+            </Grid>
+
+            <BoxView HeightRequest="1" Color="#E0E0E0"/>
+
+            <Frame BorderColor="#E0E0E0" CornerRadius="10" Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="📌 Регистрационные данные" FontAttributes="Bold" FontSize="16" TextColor="#2C3E50"/>
+                    <Label x:Name="lblDateReceived" TextColor="Black"/>
+                    <Label x:Name="lblSender" TextColor="Black"/>
+                    <Label x:Name="lblSummary" TextColor="Black"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BorderColor="#E0E0E0" CornerRadius="10" Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="⚙️ Исполнение" FontAttributes="Bold" FontSize="16" TextColor="#2C3E50"/>
+                    <Label x:Name="lblExecutor" TextColor="Black"/>
+                    <Label x:Name="lblDeadline" TextColor="Black"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <HorizontalStackLayout Spacing="10" Margin="0,20,0,10">
+                <Button x:Name="btnEdit" Text="✏️ РЕДАКТИРОВАТЬ" 
+                        BackgroundColor="#2C3E50" TextColor="White"
+                        HorizontalOptions="FillAndExpand" HeightRequest="50"
+                        FontAttributes="Bold"/>
+                <Button x:Name="btnDelete" Text="🗑️ УДАЛИТЬ" 
+                        BackgroundColor="#E74C3C" TextColor="White"
+                        HorizontalOptions="FillAndExpand" HeightRequest="50"
+                        FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

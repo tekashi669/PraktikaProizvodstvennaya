@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobilkaDocument.Pages.RegisterPage"
+             Title="Регистрация"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <StackLayout Padding="30" Spacing="15" VerticalOptions="Center">
+
+            <Label Text="📋" FontSize="40" HorizontalOptions="Center"/>
+            <Label Text="Регистрация" FontSize="24" FontAttributes="Bold" 
+                   HorizontalOptions="Center" TextColor="#2C3E50"/>
+
+            <Entry x:Name="txtFullName" Placeholder="ФИО" FontSize="16" HeightRequest="50"
+                   TextColor="Black" PlaceholderColor="Gray"/>
+            <Entry x:Name="txtEmail" Placeholder="Email" Keyboard="Email" FontSize="16" HeightRequest="50"
+                   TextColor="Black" PlaceholderColor="Gray"/>
+            <Entry x:Name="txtPassword" Placeholder="Пароль" IsPassword="True" FontSize="16" HeightRequest="50"
+                   TextColor="Black" PlaceholderColor="Gray"/>
+            <Entry x:Name="txtConfirmPassword" Placeholder="Подтвердите пароль" IsPassword="True" FontSize="16" HeightRequest="50"
+                   TextColor="Black" PlaceholderColor="Gray"/>
+
+            <Button x:Name="btnRegister" Text="ЗАРЕГИСТРИРОВАТЬСЯ" 
+                    BackgroundColor="#27AE60" TextColor="White"
+                    HeightRequest="50" FontSize="16" FontAttributes="Bold"/>
+
+            <Button x:Name="btnBack" Text="НАЗАД" 
+                    BackgroundColor="#2C3E50" TextColor="White"
+                    HeightRequest="50" FontSize="14"/>
+
+            <Label x:Name="lblStatus" Text="" FontSize="12" HorizontalOptions="Center" TextColor="Red"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
